@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/collegeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="College Name"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/buttonRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Red"
+        android:layout_below="@id/collegeName"
+        android:layout_marginTop="20dp"
+        android:onClick="changeColor" />
+
+    <Button
+        android:id="@+id/buttonBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blue"
+        android:layout_below="@id/buttonRed"
+        android:layout_marginTop="20dp"
+        android:onClick="changeColor" />
+
+    <Button
+        android:id="@+id/buttonGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Green"
+        android:layout_below="@id/buttonBlue"
+        android:layout_marginTop="20dp"
+        android:onClick="changeColor" />
+
+    <Button
+        android:id="@+id/buttonMagenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Magenta"
+        android:layout_below="@id/buttonGreen"
+        android:layout_marginTop="20dp"
+        android:onClick="changeColor" />
+
+</RelativeLayout>
