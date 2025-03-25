@@ -1,0 +1,2 @@
+Create a new class file by right clicking on project folder (com.example.application_name), then name it as DatabaseAdapter
+Click OK and copy-paste the code from DatabaseAdapter.java to this new class file

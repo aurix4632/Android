@@ -1,0 +1,87 @@
+package com.example.allslipssolution;
+
+import android.app.AlertDialog;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etId, etName, etAddress, etPhone;
+    Button btnInsert, btnShow;
+    DatabaseAdapter dbHelper;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        dbHelper = new DatabaseAdapter(this);
+        etId = findViewById(R.id.et_id);
+        etName = findViewById(R.id.et_name);
+        etAddress = findViewById(R.id.et_address);
+        etPhone = findViewById(R.id.et_phno);
+        btnInsert = findViewById(R.id.btn_insert);
+        btnShow = findViewById(R.id.btn_show);
+
+        btnInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertCompany();
+            }
+        });
+
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAllCompanies();
+            }
+        });
+    }
+
+    private void insertCompany() {
+        long result = dbHelper.insertCompany(
+                Integer.parseInt(etId.getText().toString()),
+                etName.getText().toString(),
+                etAddress.getText().toString(),
+                etPhone.getText().toString());
+
+        if (result != -1) {
+            clearFields();
+            Toast.makeText(MainActivity.this, "Record Inserted", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "Failed to Insert Record", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    private void showAllCompanies() {
+        Cursor cursor = dbHelper.getAllCompanies();
+        StringBuilder stringBuilder = new StringBuilder();
+        while (cursor.moveToNext()) {
+            stringBuilder.append("ID: ").append(cursor.getInt(0)).append("\n");
+            stringBuilder.append("Name: ").append(cursor.getString(1)).append("\n");
+            stringBuilder.append("Address: ").append(cursor.getString(2)).append("\n");
+            stringBuilder.append("Phone: ").append(cursor.getString(3)).append("\n\n");
+        }
+        cursor.close();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("All Company Details");
+        builder.setMessage(stringBuilder.toString());
+        builder.setPositiveButton("OK", null);
+        builder.show();
+    }
+
+    private void clearFields() {
+        etId.setText("");
+        etName.setText("");
+        etAddress.setText("");
+        etPhone.setText("");
+    }
+}
