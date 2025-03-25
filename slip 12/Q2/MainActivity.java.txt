@@ -1,0 +1,55 @@
+package com.example.allslipssolution;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+   TimePicker timePicker;
+   DatePicker datePicker;
+   Button setTimeButton, setDateButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        timePicker = findViewById(R.id.timePicker);
+        datePicker = findViewById(R.id.datePicker);
+        setTimeButton = findViewById(R.id.btnSetTime);
+        setDateButton = findViewById(R.id.btnSetDate);
+
+        setTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTime();
+            }
+        });
+
+        setDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDate();
+            }
+        });
+    }
+
+    private void setTime() {
+        timePicker.setIs24HourView(true);
+        int hour = timePicker.getCurrentHour();
+        int minute = timePicker.getCurrentMinute();
+        Toast.makeText(this, "Time Selected: " + hour + ":" + minute, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setDate() {
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth() + 1;
+        int year = datePicker.getYear();
+        Toast.makeText(this, "Date Selected: " + day + "/" + month + "/" + year, Toast.LENGTH_SHORT).show();
+    }
+}
