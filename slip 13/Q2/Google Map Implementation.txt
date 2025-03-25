@@ -1,0 +1,20 @@
+1. Go to console.developers.google.com
+2. Sign in with your Google account
+3. Create a new project with any name 
+4. After that, click 'Enable API and Services' from the left side panel 
+5. Now, search for Maps SDK for Android
+6. Then, enable that API Service
+7. Now, navigate to 'API and Services' -> 'Credentials' on the left side panel 
+8. Now click 'Create Credentials' -> 'API Key' 
+9. Your API Key is generated, now copy this key and paste it in the manifest file according to the following instructions
+
+10. In Module: app of build.gradle.kts (under Gradle Scripts in Project Directory) add this dependency:
+         implementation("com.google.maps.android:android-maps-utils:3.8.0")
+
+11. Add this text to Android Manifest file before </application>:
+     <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAbeJ3sZ7dPcxt454jRQ2Cva-9bLinxnIM"/>
+
+12. DONE! Now copy the code from the main.xml and main.java files to your project 
+	(SLIPS SOLVED BY YOUR FRIEND -> NB)
