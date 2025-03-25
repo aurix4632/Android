@@ -1,0 +1,25 @@
+package com.example.factorial;
+
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ResultActivity extends AppCompatActivity {
+    TextView txtv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+        txtv = findViewById(R.id.resultText);
+        int number = getIntent().getIntExtra("number", 0);
+        double fact = calc(number);
+        txtv.setText("Factorial of " + number + " = " + fact);
+    }
+    private double calc(int n) {
+        if (n <= 1) {
+            return 1;
+        } else {
+            return n * calc(n - 1);
+        }
+    }
+}

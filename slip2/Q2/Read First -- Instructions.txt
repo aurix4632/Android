@@ -1,0 +1,14 @@
+1. Add this to android manifest file(manifests/AndroidManifest.xml)
+	under this:         <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+                                              xmlns:tools="http://schemas.android.com/tools">
+	add this ->>    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+           NEXT -
+	after this:     </activity>   (Activity Closed)
+	add this:      <service android:name=".AudioService" />
+2. Create a raw source directory (if not present)
+	- Right click on res folder in project
+	- Select New -> Android Resource Directory
+	- In Resource Dropdown , select 'raw' and click 'OK'
+	- now add any song/ sudio file to this 'raw' folder
+3. Create a new Java Class file named as 'AudioService.java'
+	- paste the code from AudioService.java to the project 
