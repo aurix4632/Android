@@ -1,0 +1,7 @@
+Copy the AndroidManifest.xml file code into actual AndroidManifest.xml file below this line 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+       <PASTE_HERE>
+    <application 
+	.....
+
