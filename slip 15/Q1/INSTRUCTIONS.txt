@@ -1,0 +1,4 @@
+Add a new drawable resource file by
+	res -> drawable -> right click -> new -> drawable resource file
+Name it as border_view
+DONE! Now copy the code from border_view.xml to this file
