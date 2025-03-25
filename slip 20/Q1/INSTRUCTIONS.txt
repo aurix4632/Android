@@ -1,0 +1,1 @@
+Add the three images to the res/drawable folder in project directory

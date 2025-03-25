@@ -1,0 +1,32 @@
+package com.example.allslipssolution;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+    ImageView imageView;
+    Button changeImageButton;
+    final int[] imageResources = {R.drawable.img1, R.drawable.img2, R.drawable.img3};
+    int currentImageIndex = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+        changeImageButton = findViewById(R.id.changeImageButton);
+        imageView.setImageResource(imageResources[currentImageIndex]);
+
+        changeImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentImageIndex = (currentImageIndex + 1) % imageResources.length;
+                imageView.setImageResource(imageResources[currentImageIndex]);
+            }
+        });
+    }
+}
