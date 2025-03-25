@@ -1,0 +1,1 @@
+1. Add the to icons of 'bulb_on' and 'bulb_off' to res/drawable folder

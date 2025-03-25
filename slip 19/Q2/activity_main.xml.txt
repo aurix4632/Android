@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TableRow>
+        <TextView
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="80dp"
+            android:id="@+id/text_membership_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Membership Form"
+            android:textStyle="bold"
+            android:textSize="24sp"/>
+    </TableRow>
+
+    <EditText
+        android:id="@+id/edit_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Full Name"/>
+
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender" />
+    </TableRow>
+
+    <TableRow>
+        <RadioGroup
+            android:id="@+id/rg1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+
+            <RadioButton
+                android:id="@+id/radio_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other" />
+        </RadioGroup>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/edit_current_weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Current Weight"
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/edit_current_height"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Current Height"
+            android:inputType="number"/>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/edit_goal_weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Goal Weight"
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/edit_age"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Age"
+            android:inputType="number"/>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/edit_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="number"/>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/edit_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"/>
+    </TableRow>
+
+    <TableRow>
+
+        <CheckBox
+            android:id="@+id/checkbox_membership_rules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I have read, understood and accepted the\nmembership rules" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUBMIT"/>
+</TableLayout>

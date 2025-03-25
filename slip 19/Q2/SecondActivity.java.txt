@@ -1,0 +1,37 @@
+package com.example.allslipssolution;
+
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity extends AppCompatActivity {
+
+    TextView nameTextView, genderTextView, weightTextView, heightTextView, goalWeightTextView, ageTextView, phoneTextView, addressTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        nameTextView = findViewById(R.id.text_name);
+        genderTextView = findViewById(R.id.text_gender);
+        weightTextView = findViewById(R.id.text_weight);
+        heightTextView = findViewById(R.id.text_height);
+        goalWeightTextView = findViewById(R.id.text_goal_weight);
+        ageTextView = findViewById(R.id.text_age);
+        phoneTextView = findViewById(R.id.text_phone);
+        addressTextView = findViewById(R.id.text_address);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            nameTextView.setText("Name: " + extras.getString("Name"));
+            genderTextView.setText("Gender: " + extras.getString("Gender"));
+            weightTextView.setText("Weight: " + extras.getString("Weight"));
+            heightTextView.setText("Height: " + extras.getString("Height"));
+            goalWeightTextView.setText("Goal Weight: " + extras.getString("GoalWeight"));
+            ageTextView.setText("Age: " + extras.getString("Age"));
+            phoneTextView.setText("Phone: " + extras.getString("Phone"));
+            addressTextView.setText("Address: " + extras.getString("Address"));
+        }
+    }
+}
