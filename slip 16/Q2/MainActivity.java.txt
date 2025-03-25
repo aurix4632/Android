@@ -1,0 +1,37 @@
+package com.example.allslipssolution;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    private TimePicker timePicker;
+    private Button btnSet;
+    private TextView txtv1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        timePicker = findViewById(R.id.timePicker);
+        btnSet = findViewById(R.id.btnSet);
+        txtv1 = findViewById(R.id.txtv1);
+
+        btnSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int hour = timePicker.getCurrentHour();
+                int minute = timePicker.getCurrentMinute();
+
+                String time = String.format("%02d:%02d", hour, minute);
+                txtv1.setText("Selected Time: " + time);
+                Toast.makeText(MainActivity.this, "Time selected: " + time, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
