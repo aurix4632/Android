@@ -1,0 +1,20 @@
+package com.example.allslipssolution;
+
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+        TextView textViewPowerResult = findViewById(R.id.textViewPowerResult);
+        TextView textViewAverageResult = findViewById(R.id.textViewAverageResult);
+        double power = getIntent().getDoubleExtra("power", 0);
+        double average = getIntent().getDoubleExtra("average", 0);
+        textViewPowerResult.setText("Power: " + power);
+        textViewAverageResult.setText("Average: " + average);
+    }
+}

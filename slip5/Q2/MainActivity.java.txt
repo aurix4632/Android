@@ -1,0 +1,43 @@
+package com.example.allslipssolution;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button showDialogButton = findViewById(R.id.btn);
+        showDialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomDialog();
+            }
+        });
+    }
+
+    private void showCustomDialog() {
+        final String[] friendNames = {"Raj", "Pravin", "Prajwal", "Harsh"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose a friend")
+                .setItems(friendNames, (dialog, which) -> {
+                    String selectedFriend = friendNames[which];
+                    greetFriend(selectedFriend);
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void greetFriend(String friendName) {
+        Toast.makeText(this, "Hello, " + friendName + "! Nice to Meet You!", Toast.LENGTH_SHORT).show();
+    }
+}
