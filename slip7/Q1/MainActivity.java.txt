@@ -1,0 +1,28 @@
+package com.example.allslipssolution;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    RadioGroup rg;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        rg = findViewById(R.id.radioGroup);
+
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rb = findViewById(checkedId);
+                String opt = rb.getText().toString();
+                Toast.makeText(MainActivity.this, "Selected Option: " + opt, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
