@@ -1,0 +1,7 @@
+Create a new class file by 
+    right click on com.example.app_name -> new -> java class -> Name it 'Receiver' -> OK
+
+Now Add this code in strings.xml into res/values/strings.xml
+<string name="title">Notification DEMO</string>
+
+DONE!

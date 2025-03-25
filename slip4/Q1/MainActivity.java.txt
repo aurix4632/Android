@@ -1,0 +1,68 @@
+package com.example.calculator;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText fnum, snum;
+    Button add, sub, multi, divide;
+    TextView res;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        add = (Button) findViewById(R.id.addbtn);
+        sub = (Button) findViewById(R.id.subbtn);
+        multi = (Button) findViewById(R.id.multibtn);
+        divide = (Button) findViewById(R.id.divbtn);
+
+        fnum = (EditText) findViewById(R.id.et1);
+        snum = (EditText) findViewById(R.id.et2);
+
+        res = (TextView) findViewById(R.id.res);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int n1 = Integer.parseInt(fnum.getText().toString());
+                int n2 = Integer.parseInt(snum.getText().toString());
+                int result = n1 + n2;
+                res.setText(String.valueOf(result));
+            }
+        });
+
+        sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int n1 = Integer.parseInt(fnum.getText().toString());
+                int n2 = Integer.parseInt(snum.getText().toString());
+                int result = n1 - n2;
+                res.setText(String.valueOf(result));
+            }
+        });
+        multi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int n1 = Integer.parseInt(fnum.getText().toString());
+                int n2 = Integer.parseInt(snum.getText().toString());
+                int result = n1 * n2;
+                res.setText(String.valueOf(result));
+            }
+        });
+        divide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int n1 = Integer.parseInt(fnum.getText().toString());
+                int n2 = Integer.parseInt(snum.getText().toString());
+                int result = n1 / n2;
+                res.setText(String.valueOf(result));
+            }
+        });
+    }
+}

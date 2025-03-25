@@ -1,0 +1,58 @@
+package com.example.customerdetails;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText name, addr, num;
+    Button insert, show, del;
+    DatabaseAdapter helper;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        name = findViewById(R.id.et_name);
+        addr = findViewById(R.id.et_addr);
+        num = findViewById(R.id.et_ph);
+
+        insert = findViewById(R.id.ins_btn);
+        show = findViewById(R.id.show_btn);
+        del = findViewById(R.id.del_btn);
+
+        helper = new DatabaseAdapter(this);
+    }
+    public void addUser(View v) {
+        String t1 = name.getText().toString();
+        String t2 = addr.getText().toString();
+        String t3 = num.getText().toString();
+
+        if (t1.isEmpty() || t2.isEmpty() || t3.isEmpty()) {
+            DatabaseAdapter.Messages.message(getApplicationContext(), "Enter all Fields");
+        } else {
+            long id = helper.insertData(t1, t2, t3); // Corrected parameter order
+            if (id <= 0) {
+                DatabaseAdapter.Messages.message(getApplicationContext(), "Insertion Unsuccessful");
+            } else {
+                DatabaseAdapter.Messages.message(getApplicationContext(), "Insertion Successful");
+            }
+            name.setText("");
+            addr.setText("");
+            num.setText("");
+        }
+    }
+    public void getData(View v) {
+        String data = helper.getData();
+        DatabaseAdapter.Messages.message(getApplicationContext(), data);
+    }
+    public void deleteAll(View v) {
+        int count = helper.deleteAll();
+        if (count > 0) {
+            DatabaseAdapter.Messages.message(getApplicationContext(), "All records deleted successfully");
+        } else {
+            DatabaseAdapter.Messages.message(getApplicationContext(), "No records to delete");
+        }
+    }
+}

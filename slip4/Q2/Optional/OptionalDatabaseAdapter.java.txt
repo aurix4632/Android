@@ -1,0 +1,83 @@
+package com.example.customerdetails;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+public class DatabaseAdapter {
+    DbHelper myhelper;
+    public DatabaseAdapter(Context context) {
+        myhelper = new DbHelper(context);
+    }
+    public long insertData(String name, String addr, String phNumber) {
+        SQLiteDatabase dbb = myhelper.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(DbHelper.NAME, name);
+        cv.put(DbHelper.ADDRESS, addr);
+        cv.put(DbHelper.PHONE, phNumber);
+        long id = dbb.insert(DbHelper.TABLE_NAME, null, cv);
+        return id;
+    }
+    public String getData() {
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+        String[] cols = {DbHelper.UID, DbHelper.NAME, DbHelper.ADDRESS, DbHelper.PHONE};
+        Cursor csr = db.query(DbHelper.TABLE_NAME, cols, null, null, null, null, null, null);
+        StringBuffer buffer = new StringBuffer();
+        while (csr.moveToNext()) {
+            int cid = csr.getInt(csr.getColumnIndex(DbHelper.UID));
+            String name = csr.getString(csr.getColumnIndex(DbHelper.NAME));
+            String address = csr.getString(csr.getColumnIndex(DbHelper.ADDRESS));
+            String phone = csr.getString(csr.getColumnIndex(DbHelper.PHONE));
+            buffer.append(cid + "  " + name + "  " + address + "  " + phone + " \n");
+        }
+        return buffer.toString();
+    }
+    public int deleteAll() {
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+        int count = db.delete(DbHelper.TABLE_NAME, null, null);
+        return count;
+    }
+    static class DbHelper extends SQLiteOpenHelper {
+        private static final String DATABASE_NAME = "myDatabase";
+        private static final String TABLE_NAME = "myTable";
+        private static final int DATABASE_VERSION = 1;
+        private static final String UID = "id";
+        private static final String NAME = "name";
+        private static final String ADDRESS = "address";
+        private static final String PHONE = "phoneNum";
+        private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + UID + " INTEGER PRIMARY KEY , "
+                + NAME + " TEXT, " + ADDRESS + " TEXT, " + PHONE + " TEXT)";
+        private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
+        private Context context;
+        public DbHelper(Context context) {
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+            this.context = context;
+        }
+        public void onCreate(SQLiteDatabase db) {
+            try {
+                db.execSQL(CREATE_TABLE);
+            } catch (Exception e) {
+                Messages.message(context, "" + e);
+            }
+        }
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            try {
+                Messages.message(context, "onUpgrade");
+                db.execSQL(DROP_TABLE);
+                onCreate(db);
+            } catch (Exception e) {
+                Messages.message(context, "" + e);
+            }
+        }
+    }
+    static class Messages {
+        public static void message(Context context, String message) {
+            if (context != null) {
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+}
