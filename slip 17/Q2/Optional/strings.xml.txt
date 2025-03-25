@@ -1,0 +1,1 @@
+<string name="choose_item_prompt">Choose an item</string>

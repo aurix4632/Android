@@ -1,0 +1,11 @@
+1. First create a new android resource directory form
+	res -> right click -> new -> Android Resource Directory
+	Now Select 'menu' from dropdown list and click OK
+
+2. Now right click the newly created menu folder in res -> menu
+	Add a new Menu Resource file here 
+	Right click menu -> new -> Menu Resource file 
+	Name it context_menu
+	Click OK 
+
+3. DONE! Now copy the code from context_menu.xml to this newly created context_menu.xml file 

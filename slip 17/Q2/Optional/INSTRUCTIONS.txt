@@ -1,0 +1,7 @@
+1. Add a checkbox.xml file in res -> layout -> right click -> new Layout Resource File
+	add the code from checkbox.xml file to this new created file
+
+2. In the strings.xml file (res -> values -> strings.xml) add this :
+	    <string name="choose_item_prompt">Choose an item</string>
+
+3. DONE 
