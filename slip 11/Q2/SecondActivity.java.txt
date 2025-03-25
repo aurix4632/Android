@@ -1,0 +1,32 @@
+package com.example.allslipssolution;
+
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        TextView firstNameText = findViewById(R.id.textViewFirstName);
+        TextView middleNameText = findViewById(R.id.textViewMiddleName);
+        TextView lastNameText = findViewById(R.id.textViewLastName);
+        TextView dobText = findViewById(R.id.textViewDOB);
+        TextView addressText = findViewById(R.id.textViewAddress);
+        TextView emailText = findViewById(R.id.textViewEmail);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            firstNameText.setText("First Name: " + extras.getString("firstName"));
+            middleNameText.setText("Middle Name: " + extras.getString("middleName"));
+            lastNameText.setText("Last Name: " + extras.getString("lastName"));
+            dobText.setText("Date of Birth: " + extras.getString("dob"));
+            addressText.setText("Address: " + extras.getString("address"));
+            emailText.setText("Email ID: " + extras.getString("email"));
+        }
+    }
+}

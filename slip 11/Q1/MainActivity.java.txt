@@ -1,0 +1,71 @@
+package com.example.allslipssolution;
+
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText editText;
+    private Button buttonApply;
+    private TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editText = findViewById(R.id.editText);
+        buttonApply = findViewById(R.id.buttonApply);
+        textView = findViewById(R.id.textView);
+
+        buttonApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                applyStyles();
+            }
+        });
+    }
+
+    private void applyStyles() {
+        String text = editText.getText().toString();
+        textView.setText(text);
+        textView.setTextColor(Color.BLUE);
+        textView.setTextSize(20);
+        textView.setTypeface(Typeface.DEFAULT);
+
+        int colorIndex = (int) (Math.random() * 3);
+        switch (colorIndex) {
+            case 0:
+                textView.setTextColor(Color.RED);
+                break;
+            case 1:
+                textView.setTextColor(Color.GREEN);
+                break;
+            case 2:
+                textView.setTextColor(Color.YELLOW);
+                break;
+        }
+
+        int styleIndex = (int) (Math.random() * 3);
+        switch (styleIndex) {
+            case 0:
+                textView.setTypeface(Typeface.DEFAULT_BOLD);
+                break;
+            case 1:
+                textView.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD_ITALIC));
+                break;
+            case 2:
+                textView.setTypeface(Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL));
+                break;
+        }
+        int randomSize = (int) (Math.random() * 9) + 16;
+        textView.setTextSize(randomSize);
+    }
+}
